@@ -11,23 +11,22 @@ const options = program.opts();
     return;
     }
     else {
-        fs.readFile(`${options.input}`, 'utf8', (err, data) => {
-            if (err) {
-            console.log('such file does not exist');
-            return;
+    let filedata = fs.readFileSync(`${options.input}`, { encoding: 'utf8', flag: 'r' });
+    let jsondata = JSON.parse(filedata);
+        let data = "";
+        if (Array.isArray(jsondata) === true) {
+            for (let i of jsondata) {
+            data = data + i.exchangedate + ":" + i.rate + "\n";
             }
-            if (options.display != undefined) {
-            console.log(data);
-            }
-            if (options.output != undefined) {
-                fs.writeFile(`${options.output}`, data, err => {
-                    if (err) {
-                    console.log('could not save it into file, sorry');
-                    }
-                    else {
-                    console.log(`result was saved in ${options.output}`);
-                    }
-                });
-            }
-        });
+        }
+        else {
+        data = data + jsondata.exchangedate + ":" + jsondata.rate;
+        }
+        if (options.display != undefined) {
+        console.log(data);
+        }
+        if (options.output != undefined) {
+        fs.writeFileSync(`${options.output}`, data);
+        console.log(`result was saved in ${options.output}`);
+        }
     }
