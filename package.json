@@ -1,18 +1,6 @@
 {
-  "name": "labwork",
-  "version": "1.0.0",
-  "description": "test pack",
-  "main": "index.js",
-  "scripts": {
-    "test": "console.log()\u001b[D\"\")\u001b[D\u001b[D\u001b[D\u001b[Cidk\");"
-  },
-  "repository": {
-    "type": "git",
-    "url": "bc2024-3"
-  },
-  "keywords": [
-    "ehh"
-  ],
-  "author": "maxim evseev",
-  "license": "ISC"
+  "dependencies": {
+    "commander": "^12.1.0",
+    "fs": "^0.0.1-security"
+  }
 }
